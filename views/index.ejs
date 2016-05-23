@@ -1,0 +1,49 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<style type="text/css">
+	.therm{
+		max-width: 1%;
+	}
+	.userInput{
+		position: fixed;
+		top: 3%;
+		left: 5%;
+	}
+
+</style>
+
+<div id="container" class="col-sm-12 text-center">
+	<h1>Get your local weather</h1>
+
+
+	<div class="forecast">
+		<h3>Todays forcast :</h3>
+		<%= body.weather[0].main %> 
+		<img src= <%=icon%> >
+	</div>
+
+	<div class="theSkies">
+		<h3>How are the skies? </h3>
+		<%= body.weather[0].description %>
+	</div>
+	<div class="temperature">
+		<h3>The temperature is:</h3> 
+		<%=body.main.temp %>°F 
+		<img class='therm' src="images/therm.png">
+	</div>
+	<div class="humidity">
+		<h3>Humidity:</h3> 
+		<%=body.main.humidity%>%
+	</div>
+	<div class="city">
+		<h3>City of:</h3> 
+		<span class="citySpan"><%=body.name%></span>
+	</div>
+</div>
+	<div class="userInput col-sm-6">
+		<h5 >Check the weather in your city</h5>
+			<form id="myForm" class="userForm">
+				<input type="text" name="userInput" placeholder="Name of your city" value="">
+			</form>
+	</div>
+
