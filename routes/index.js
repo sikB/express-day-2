@@ -7,17 +7,12 @@ var request = require('request');
 router.get('/', function(req, res, next) {
 
 	var apikey = '051d225f889787cb457e6eb4cb6a32f5';
-	var weatherUrl = "http://api.openweathermap.org/data/2.5/weather?q=Atlanta&units=imperial&APPID="+apikey;
+	var weatherUrl = "http://api.openweathermap.org/data/2.5/weather?q=";
+	var city =  "Atlanta&units=imperial&APPID="+apikey;
 	// var userInput = document.getElementById("myForm").elements[0].value;
-	console.log(userInput);
-	
-	function userInput() {
-    var inPut = document.getElementById("myForm").elements[0].value;
-	var userCity = 'http://api.openweathermap.org/data/2.5/weather?q=' + inPut + '&units=imperial&APPID=' +apikey;
-    // console.log(userInput.data);
-}
+	// console.log(userInput);
 
-	request.get(weatherUrl, function(error, response, body){
+	request.get((weatherUrl + city), function(error, response, body){
 		body = JSON.parse(body);
 		weatherIcon = 'http://openweathermap.org/img/w/' + body.weather[0].icon + '.png';
 		console.log(body);

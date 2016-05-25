@@ -1,6 +1,9 @@
+<!DOCTYPE html>
 <html ng-app="getCity">
 <head>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<title></title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
 <script type="text/javascript" src="controller.js"></script>
 
@@ -11,47 +14,53 @@
 	.userInput{
 		position: fixed;
 		top: 3%;
-		left: 5%;
+		left: 0%;
+	}
+	.theSkyes{
+		text-transform: uppercase;
 	}
 
 </style>
+
+
 </head>
 <body ng-controller="cityController">
+
 <div id="container" class="col-sm-12 text-center">
 	<h1>Get your local weather</h1>
 
 
 	<div class="forecast">
 		<h3>Todays forcast :</h3>
-		<%= body.weather[0].main %> 
-		<img src= <%=icon%> >
+		{{skyes}}
+		<img src= {{weatherIcon}} >
 	</div>
 
 	<div class="theSkies">
 		<h3>How are the skies? </h3>
-		<%= body.weather[0].description %>
+		{{weather}}
 	</div>
 	<div class="temperature">
 		<h3>The temperature is:</h3> 
-		<%=body.main.temp %>°F 
-		<img class='therm' src="images/therm.png">
+		{{temp}}
+		<img class='therm' src="../public/images/therm.png">
 	</div>
 	<div class="humidity">
 		<h3>Humidity:</h3> 
-		<%=body.main.humidity%>%
+		{{humidity}}%
 	</div>
 	<div class="city">
 		<h3>City of:</h3> 
-		<span class="citySpan"><%=body.name%></span>
+		<span class="citySpan">{{city}}</span>
 	</div>
 
 	<div class="userInput col-sm-6">
-	{{message}}
 		<h5 >Check the weather in your city</h5>
-			<form id="myForm" class="userForm">
-				<input id="inputForm" type="text" name="userInput" placeholder="Name of your city" value="">
+			<form id="myForm" class="userForm" ng-submit='enterCity()'>
+				<input id="inputForm" type="text" name="userInput" placeholder="Name of your city" value="" ng-model='userInput'>
 			</form>
 	</div>
 </div>
-	</body>
-	</html>
+
+</body>
+</html>
